@@ -10,4 +10,14 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
+    public function productList(){
+        return view('admin.productList');
+    }
+    public function categoryList(){
+        return view('admin.categoryList');
+    }
+    public function orderList(){
+        return view('admin.orderList');
+    }
+
 }

@@ -72,6 +72,12 @@ Route::post('/logout', function () {
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-Route::get('/admin/user', [UserController::class, 'user'])->name('user');
 
+
+//admin
+//Get
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/admin/product', [AdminController::class, 'productList'])->name('product');
+Route::get('/admin/category', [AdminController::class, 'categoryList'])->name('category');
+Route::get('/admin/order', [AdminController::class, 'orderList'])->name('order');
+Route::get('/admin/user', [UserController::class, 'index'])->name('user');
