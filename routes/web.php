@@ -16,8 +16,9 @@ use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -75,9 +76,16 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 
 //admin
-//Get
+//Get method 
+Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->middleware('admin')->group(function () {
+    // Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard');
+    // Route::resource('users', 'UserController');
+});
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/admin/user', [UserController::class, 'index'])->name('user');
+Route::get('/admin/order', [AdminController::class, 'orderList'])->name('order');
 Route::get('/admin/product', [AdminController::class, 'productList'])->name('product');
 Route::get('/admin/category', [AdminController::class, 'categoryList'])->name('category');
-Route::get('/admin/order', [AdminController::class, 'orderList'])->name('order');
-Route::get('/admin/user', [UserController::class, 'index'])->name('user');
+
+
+Route::post('/admin/user/create',[UserController::class,'store'])->name('addUser');

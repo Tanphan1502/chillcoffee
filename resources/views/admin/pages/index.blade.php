@@ -1,125 +1,125 @@
 @extends('admin.layout')
 @section('content')
-        <!-- main content start -->
-        <div class="wrapper wrapper-content">
-            <!-- first row table start -->
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <span class="label label-success pull-right">Tháng này</span>
-                            <h5>Doanh thu</h5>
-                        </div>
-                        <div class="ibox-content">
-                            <h1 class="no-margins">40 886,200</h1>
-                            <!-- <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div> -->
-                            <small>Tổng doanh thu</small>
-                        </div>
+    <!-- main content start -->
+    <div class="wrapper wrapper-content">
+        <!-- first row table start -->
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-success pull-right">Tháng này</span>
+                        <h5>Doanh thu</h5>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <span class="label label-info pull-right">Trong năm</span>
-                            <h5>Đơn hàng</h5>
-                        </div>
-                        <div class="ibox-content">
-                            <h1 class="no-margins">275,800</h1>
-                            <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
-                            <small>Đơn đặt hàng</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <span class="label label-primary pull-right">Hôm nay</span>
-                            <h5>Khách truy cập</h5>
-                        </div>
-                        <div class="ibox-content">
-                            <h1 class="no-margins">106,120</h1>
-                            <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
-                            <small>người</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <span class="label label-danger pull-right">Thấp</span>
-                            <h5>Doanh thu ngày</h5>
-                        </div>
-                        <div class="ibox-content">
-                            <h1 class="no-margins">80,600</h1>
-                            <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i>
-                            </div>
-                            <small>VND</small>
-                        </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">40 886,200</h1>
+                        <!-- <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div> -->
+                        <small>Tổng doanh thu</small>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Doanh Thu</h5>
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-xs btn-white active">Hôm nay</button>
-                                    <button type="button" class="btn btn-xs btn-white">Tháng</button>
-                                    <button type="button" class="btn btn-xs btn-white">Năm</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <div class="row">
-                                <div class="col-lg-9">
-                                    <div class="flot-chart">
-                                        <div class="flot-chart-content" id="flot-dashboard-chart"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <ul class="stat-list">
-                                        <li>
-                                            <h2 class="no-margins">2,346</h2>
-                                            <small>Tổng doanh thu</small>
-                                            <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i>
-                                            </div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 48%;" class="progress-bar"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h2 class="no-margins ">4,422</h2>
-                                            <small>Doanh thu tháng này</small>
-                                            <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i>
-                                            </div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 60%;" class="progress-bar"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h2 class="no-margins ">9,180</h2>
-                                            <small>Doanh thu ngày</small>
-                                            <div class="stat-percent">22% <i class="fa fa-bolt text-navy"></i></div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 22%;" class="progress-bar"></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-info pull-right">Trong năm</span>
+                        <h5>Đơn hàng</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">275,800</h1>
+                        <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                        <small>Đơn đặt hàng</small>
                     </div>
                 </div>
             </div>
-            <!-- first row table  end-->
-
-         
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">Hôm nay</span>
+                        <h5>Khách truy cập</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">106,120</h1>
+                        <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
+                        <small>người</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-danger pull-right">Thấp</span>
+                        <h5>Doanh thu ngày</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">80,600</h1>
+                        <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i>
+                        </div>
+                        <small>VND</small>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- main content End -->
-        {{-- </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Doanh Thu</h5>
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-xs btn-white active">Hôm nay</button>
+                                <button type="button" class="btn btn-xs btn-white">Tháng</button>
+                                <button type="button" class="btn btn-xs btn-white">Năm</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="flot-dashboard-chart"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <ul class="stat-list">
+                                    <li>
+                                        <h2 class="no-margins">2,346</h2>
+                                        <small>Tổng doanh thu</small>
+                                        <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i>
+                                        </div>
+                                        <div class="progress progress-mini">
+                                            <div style="width: 48%;" class="progress-bar"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h2 class="no-margins ">4,422</h2>
+                                        <small>Doanh thu tháng này</small>
+                                        <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i>
+                                        </div>
+                                        <div class="progress progress-mini">
+                                            <div style="width: 60%;" class="progress-bar"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h2 class="no-margins ">9,180</h2>
+                                        <small>Doanh thu ngày</small>
+                                        <div class="stat-percent">22% <i class="fa fa-bolt text-navy"></i></div>
+                                        <div class="progress progress-mini">
+                                            <div style="width: 22%;" class="progress-bar"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- first row table  end-->
+
+
+    </div>
+    <!-- main content End -->
+    {{-- </div>
             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
@@ -355,4 +355,4 @@
                 </div>
             </div>
         </div> --}}
-    @endsection
+@endsection

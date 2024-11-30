@@ -1,11 +1,11 @@
-@include('admin.header')
+@include('admin.layout.header')
 <body>
-    @include('admin.rightSideBar')
+    @include('admin.layout.rightSideBar')
 
     <div id="wrapper">
-        @include('admin.topNav')
+        @include('admin.layout.topNav')
         @yield('content')
-        @include('admin.footer')
+        @include('admin.layout.footer')
     </div>
 
    

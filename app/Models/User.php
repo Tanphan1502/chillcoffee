@@ -32,6 +32,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // public function getIsAdminAttribute(){
+    //     return $this->role==='admin';
+    // }
     // Các mối quan hệ với các model khác (nếu có)
     // Ví dụ: public function posts() { return $this->hasMany(Post::class); }
 }
