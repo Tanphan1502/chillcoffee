@@ -87,5 +87,8 @@ Route::get('/admin/order', [AdminController::class, 'orderList'])->name('order')
 Route::get('/admin/product', [AdminController::class, 'productList'])->name('product');
 Route::get('/admin/category', [AdminController::class, 'categoryList'])->name('category');
 
+Route::get('/admin/user/edit/{id}',[Usercontroller::class,'editform'])->name('editform');
 
 Route::post('/admin/user/create',[UserController::class,'store'])->name('addUser');
+Route::PUT('/admin/user/edit/{id}',[UserController::class,'update'])->name("update");
+Route::DELETE('/admin/user/delete/{id}',[UserController::class, 'delete'])->name('delUser');

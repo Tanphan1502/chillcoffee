@@ -147,5 +147,26 @@
                 </div>
             </div>
             <div class="row border-bottom">
-
+                <!--Success alert-->
+                @if (session('success'))
+                <div class="alert alert-success" id="success-alert">{{session('success')}}</div>
+                @endif
+                <!--Error alert-->
+                @if (session('error'))
+                    <div class="alert alert-danger" id="error-alert"> {{session('error')}}</div>
+                @endif
             </div>
+
+            <!--set time out for alert-->
+<script>
+    setTimeout(() => {
+        var successAlert = document.getElementById('success-alert');
+        var errorAlert = document.getElementById('error-alert');
+        if (successAlert) {
+            successAlert.style.display='none';
+        }
+        if (errorAlert) {
+            errorAlert.style.display='none';
+        }
+    }, 5000);
+</script>

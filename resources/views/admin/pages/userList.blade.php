@@ -1,45 +1,46 @@
 @extends('admin.layout')
 @section('content')
+    <!-- sử dụng hàm old() để lưu lại giá trị khi người dùng gửi form lỗi -->
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
         <div class="ibox-content m-b-sm border-bottom">
             {{-- form add new user start --}}
-            <form action="{{route('addUser')}}" method="post">
+            <form action="{{ route('addUser') }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="username">Tên người dùng</label>
-                            <input type="text" id="username" name="username" value=""
+                            <input type="text" id="username" name="username" value="{{ old('username') }}"
                                 placeholder="Tên Người dùng" class="form-control" required>
                         </div>
-                        
+
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="email">Email</label>
-                            <input type="email" id="email" name="email" value=""
+                            <input type="email" id="email" name="email" value="{{ old('email') }}"
                                 placeholder="Email" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="address">Địa chỉ</label>
-                            <input type="text" id="address" name="address" value=""
+                            <input type="text" id="address" name="address" value="{{ old('address') }}"
                                 placeholder="Địa chỉ" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="user_name">Số điện thoại</label>
-                            <input type="number" id="phonenumber" name="phonenumber" value=""
+                            <label class="control-label" for="phonenumber">Số điện thoại</label>
+                            <input type="number" id="phonenumber" name="phonenumber" value="{{ old('phonenumber') }}"
                                 placeholder="Số điện thoại" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="password">Mật khẩu</label>
-                            <input type="password" id="password" name="password" value=""
-                                placeholder="Mật khẩu" class="form-control">
+                            <input type="password" id="password" name="password" value="" placeholder="Mật khẩu"
+                                class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -58,16 +59,16 @@
                             </select>
                         </div>
                     </div>
-                    {{-- <div class="col-sm-4">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="status">Trạng thái</label>
                             <select name="status" id="status" class="form-control">
-                                <option value="0" selected>Chờ kích hoạt</option>
-                                <option value="1">Kích hoạt</option>
-                                
+                                <option value="inactive" selected>Chờ kích hoạt</option>
+                                <option value="active">Kích hoạt</option>
+
                             </select>
                         </div>
-                    </div> --}}
+                    </div>
                     <button type="submit" class=" form-control-sm btn-primary pull-right ml-10">Thêm Nhanh </button>
                 </div>
             </form>
@@ -98,9 +99,15 @@
                                     <tr>
                                         <td>
                                             {{ $item->username }}
+                                             {{$item->usr_id}}
                                         </td>
                                         <td>
-                                            {{ $item->role }}
+
+                                            @if ($item->role === 'admin')
+                                                <span class="label label-warning">Admin</span>
+                                            @else
+                                                <span class="label label-primary"> Khách hàng</span>
+                                            @endif
 
                                         </td>
                                         <td>
@@ -113,12 +120,23 @@
                                             {{ $item->address }}
                                         </td>
                                         <td>
-                                            <span class="label label-primary">Kích hoạt</span>
+                                            @if ($item->status === 'inactive')
+                                                <span class="label label-warning">Chưa kích hoạt</span>
+                                            @else
+                                                <span class="label label-primary"> kích hoạt</span>
+                                            @endif
+
                                         </td>
                                         <td class="text-right">
                                             <div class="btn-group">
+                                                <form action="{{route('editform', $item->id)}}" method="GET" style="display:inline;">                                        
                                                 <button class="btn-white btn btn-xs">Sửa</button>
-                                                <button class="btn-white btn btn-xs">Xoá</button>
+                                               </form>
+                                                <form action="{{route('delUser', $item->id)}}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn-white btn btn-xs" onclick="return confirm('Bạn có chắc chắn muốn xóa {{ $item->username }}?')">Xoá </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
@@ -139,4 +157,6 @@
             </div>
         </div>
     </div>
+
+   
 @endsection

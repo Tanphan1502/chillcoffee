@@ -139,6 +139,10 @@
            });
        });
    </script>
+
+   {{-- mini function section --}}
+
+
    </body>
 
    </html>
