@@ -17,6 +17,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ProductCotroller;
 use App\Http\Controllers\Admin\UserController;
 
 
@@ -84,7 +85,7 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->middleware('adm
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/user', [UserController::class, 'index'])->name('user');
 Route::get('/admin/order', [AdminController::class, 'orderList'])->name('order');
-Route::get('/admin/product', [AdminController::class, 'productList'])->name('product');
+Route::get('/admin/product', [ProductCotroller::class, 'index'])->name('product');
 Route::get('/admin/category', [AdminController::class, 'categoryList'])->name('category');
 
 Route::get('/admin/user/edit/{id}',[Usercontroller::class,'editform'])->name('editform');

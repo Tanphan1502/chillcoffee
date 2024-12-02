@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 abstract class BaseRepository
 {
     protected $model;
-    //protected $primaryKey; //them bien luu cot id
+
 
     public function __construct(Model $model)
     {
         $this->model = $model;
-       // $this->primaryKey = $primaryKey; // khoi tao ten cot ID
     }
     public function find($id)
     {

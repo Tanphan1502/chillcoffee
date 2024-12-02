@@ -59,9 +59,11 @@
                                         </thead>
                                         <tbody>
                                             <!-- static data 1 -->
-                                            <tr>
+                                            @foreach ($pro as $pro )
+                                                <tr>
                                                 <td>
-                                                    Cà phê gói
+                                                    {{$pro->name}}
+                                                 
                                                 </td>
                                                 <td>
                                                     Cà phê hạt
@@ -84,59 +86,10 @@
                                                         <button class="btn-white btn btn-xs">Xoá</button>
                                                     </div>
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Cà phê gói
-                                                </td>
-                                                <td>
-                                                    Cà phê hạt 2
-                                                </td>
-                                                <td>
-                                                    Cà phê hạt sản xuất
-                                                </td>
-                                                <td>
-                                                    50.004 vnd
-                                                </td>
-                                                <td>
-                                                    1000
-                                                </td>
-                                                <td>
-                                                    <span class="label label-danger">Ẩn</span>
-                                                </td>
-                                                <td class="text-right">
-                                                    <div class="btn-group">
-                                                        <button class="btn-white btn btn-xs">Sửa</button>
-                                                        <button class="btn-white btn btn-xs">Xoá</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Cà phê gói3
-                                                </td>
-                                                <td>
-                                                    Cà phê hạt
-                                                </td>
-                                                <td>
-                                                    Cà phê hạt sản xuất
-                                                </td>
-                                                <td>
-                                                    50.000 vnd
-                                                </td>
-                                                <td>
-                                                    1000
-                                                </td>
-                                                <td>
-                                                    <span class="label label-warning">Sắp hết hàng</span>
-                                                </td>
-                                                <td class="text-right">
-                                                    <div class="btn-group">
-                                                        <button class="btn-white btn btn-xs">Sửa</button>
-                                                        <button class="btn-white btn btn-xs">Xoá</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            </tr> 
+                                            @endforeach
+                                           
+                                           
 
 <!-- static data 1 end -->
 

@@ -86,12 +86,6 @@ class Product extends Model
         return null;
     }
 
-    /**
-     * Xóa sản phẩm theo ID.
-     *
-     * @param int $id
-     * @return bool
-     */
     public static function deleteProduct($id)
     {
         $product = self::find($id);

@@ -20,16 +20,8 @@ class UserController extends Controller
         $user = $this->userRepository->all();
         return view('admin.pages.userList', compact('user'));
     }
-
     public function store(Request $request)
     {
-        //Authenticate
-        // $request->validate([
-        //     'username'=>'required|string|min:3',
-        //     'email'=>'required|email|unique:user',
-        //     'password'=>'required|string|min:5|confirmed',
-        // ]);
-       
         // create new user with repository
         $this->userRepository->create([
             'username'=>$request->username,
@@ -45,9 +37,6 @@ class UserController extends Controller
         ('success','Thêm người dùng thành công');
         
     }
-
-
-
 //edit user form
     public function editform($usr_id){
         $user = $this->userRepository->find($usr_id);
@@ -58,7 +47,6 @@ class UserController extends Controller
         $user = $this->userRepository->find($id);
         //xac thuc
         //cap nhat
-        //dd($usr_id);
         $data = [
             'username' => $request->username,
             'email' => $request->email,
@@ -75,7 +63,6 @@ class UserController extends Controller
         $this->userRepository->update($id, $data);
 
         return redirect()->route('user')->with('success','Cập nhật thành công');
-
     }
 
    // xoa theo id 
