@@ -4,7 +4,7 @@
         <div class="ibox-content m-b-sm border-bottom">
             {{-- form add product start  --}}
             <div class="row">
-                <form action="{{ route('update',$pro->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('updatePro',$pro->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="col-sm-4">

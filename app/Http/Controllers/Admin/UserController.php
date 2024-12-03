@@ -38,12 +38,12 @@ class UserController extends Controller
         
     }
 //edit user form
-    public function editform($id){
+    public function editUser($id){
         $user = $this->userRepository->find($id);
         return view('admin.pages.editUser',compact('user'));
     }
 
-    public function update(Request $request, $id){
+    public function updateUser(Request $request, $id){
         $user = $this->userRepository->find($id);
         //xac thuc
         //cap nhat

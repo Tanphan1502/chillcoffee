@@ -59,7 +59,7 @@ class ProductController extends Controller
         return view('admin.pages.editPro',compact('pro'));
     }
    
-    public function update(Request $request, $id)
+    public function updatePro(Request $request, $id)
     {
         //xac thuc du lieu
         //chuan bi du lieu cap nhat

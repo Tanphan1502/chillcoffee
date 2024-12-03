@@ -53,7 +53,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="role">Vị trí</label>
-                            <select name="role" id="status" class="form-control">
+                            <select name="role" id="role" class="form-control">
                                 <option value="admin" selected>Quản trị viên</option>
                                 <option value="user">Khách hàng</option>
                             </select>
@@ -85,10 +85,10 @@
                                 <tr>
 
                                     <th data-toggle="true">Tên Người dùng</th>
-                                    <th data-hide="email">Email</th>
-                                    <th data-hide="phone">Điện thoại</th>
-                                    <th data-hide="phone">Địa chỉ</th>
                                     <th data-hide="phone">Vị trí</th>
+                                    <th data-hide="phone">Điện thoại</th>
+                                    <th data-hide="email">Email</th>
+                                    <th data-hide="phone">Địa chỉ</th>
                                     <th data-hide="phone">Trạng thái</th>
                                     <th class="text-right" data-sort-ignore="true">Hành động</th>
                                 </tr>
@@ -129,7 +129,7 @@
                                         </td>
                                         <td class="text-right">
                                             <div class="btn-group">
-                                                <form action="{{route('editform', $item->id)}}" method="GET" style="display:inline;">                                        
+                                                <form action="{{route('editUser', $item->id)}}" method="GET" style="display:inline;">                                        
                                                 <button class="btn-white btn btn-xs">Sửa</button>
                                                </form>
                                                 <form action="{{route('delUser', $item->id)}}" method="POST" style="display:inline;">

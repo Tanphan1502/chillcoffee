@@ -1,18 +1,24 @@
 @extends('admin.layout')
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-
-
         <div class="ibox-content m-b-sm border-bottom">
             <div class="row">
+                <form action="{{route('addCat') }}" method="POST">
+                    @csrf
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="product_name">Loại sản phẩm</label>
-                        <input type="text" id="product_name" name="product_name" value="" placeholder="Loại sản phẩm"
+                        <label class="control-label" for="name">Loại sản phẩm</label>
+                        <input type="text" id="name" name="name" value="" placeholder="Loại sản phẩm"
                             class="form-control">
                     </div>
                 </div>
-
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="description">Mô tả ngắn</label>
+                        <input type="text" id="description" name="description" value="" placeholder="Mô tả ngắn"
+                            class="form-control">
+                    </div>
+                </div>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="status">Trạng thái</label>
@@ -22,7 +28,13 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class=" form-control btn-primary pull-right ml-10">Thêm mới </button>
+                 <div class="col-sm-4">
+                    <div class="form-group">
+                       
+                    <button type="submit" class=" col-sm-4 form-control btn-primary">Thêm mới </button>
+                    </div>
+                </div>
+                </form>
             </div>
 
         </div>
@@ -46,18 +58,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- static data 1 -->
-                                <tr>
+                                <!-- Show data 1 -->
+                            @foreach ($cat as $cat )
+                                 <tr>
                                     <td>
-                                        Cà phê gói
+                                        {{$cat->name}}
                                     </td>
 
                                     <td>
-                                        Cà phê hạt sản xuất
+                                        {{$cat->description}}
                                     </td>
 
                                     <td>
-                                        <span class="label label-danger">Ẩn</span>
+                                        <span class="label label-danger">{{$cat->status}}</span>
                                     </td>
                                     <td class="text-right">
                                         <div class="btn-group">
@@ -66,27 +79,10 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        Cà phê gói
-                                    </td>
+                            @endforeach
+                               
 
-                                    <td>
-                                        Cà phê hạt sản xuất
-                                    </td>
-
-                                    <td>
-                                        <span class="label label-primary">Hiện</span>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">Sửa</button>
-                                            <button class="btn-white btn btn-xs">Xoá</button>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <!-- static data 1 end -->
+                                <!--  data 1 end -->
 
 
 

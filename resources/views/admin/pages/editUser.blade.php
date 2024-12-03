@@ -3,7 +3,7 @@
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
         <div class="ibox-content m-b-sm border-bottom">
             {{-- form add new user start --}}
-            <form action="{{ route('update', $user->id) }}" method="post">
+            <form action="{{ route('updateUser', $user->id) }}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="row">

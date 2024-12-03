@@ -17,6 +17,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 
@@ -69,17 +70,24 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->middleware('adm
 });
 // index metric
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-Route::get('/admin/user', [UserController::class, 'index'])->name('user');
 Route::get('/admin/order', [AdminController::class, 'orderList'])->name('order');
-Route::get('/admin/product', [ProductController::class, 'index'])->name('product');
-Route::get('/admin/category', [AdminController::class, 'categoryList'])->name('category');
+
+
 //user
-Route::get('/admin/user/edit/{id}',[Usercontroller::class,'editform'])->name('editform');
+Route::get('/admin/user', [UserController::class, 'index'])->name('user');
+Route::get('/admin/user/edit/{id}',[Usercontroller::class,'editUser'])->name('editUser');
 Route::post('/admin/user/create',[UserController::class,'store'])->name('addUser');
-Route::PUT('/admin/user/edit/{id}',[UserController::class,'update'])->name("update");
+Route::PUT('/admin/user/edit/{id}',[UserController::class, 'updateUser'])->name("updateUser");
 Route::DELETE('/admin/user/delete/{id}',[UserController::class, 'delete'])->name('delUser');
+
+
 //product
+Route::get('/admin/product', [ProductController::class, 'index'])->name('product');
 Route::GET('/admin/product/edit/{id}',[ProductController::class, 'editPro'])->name('editPro');
 Route::POST('/admin/product/addpro', [ProductController::class,'store'])->name('addPro');
-Route::PUT('/admin/product/edit/{id}', [ProductController::class,'update'])->name('update');
+Route::PUT('/admin/product/edit/{id}', [ProductController::class, 'updatePro'])->name('updatePro');
 Route::DELETE('/admin/product/delete/{id}',[ProductController::class,'delete'])->name('delPro');
+
+//categories
+Route::get('/admin/category', [CategoryController::class, 'index'])->name('category');
+Route::POST('/admin/category/add',[CategoryController::class,'store'])->name('addCat');
