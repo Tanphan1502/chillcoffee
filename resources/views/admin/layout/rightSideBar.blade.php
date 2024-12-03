@@ -43,8 +43,8 @@
                        <a href="#"><i class="fa fa-list-ol"></i> <span class="nav-label">Danh mục-Sản
                                phẩm</span><span class="fa arrow"></span></a>
                        <ul class="nav nav-second-level collapse">
-                           <li><a href="{{ route('product') }}">Danh sách sản phẩm</a></li>
                            <li><a href="{{ route('category') }}">Danh sách loại</a></li>
+                           <li><a href="{{ route('product') }}">Danh sách sản phẩm</a></li>
                        </ul>
                    </li>
 

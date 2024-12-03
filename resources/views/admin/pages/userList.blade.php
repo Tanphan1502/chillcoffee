@@ -135,7 +135,7 @@
                                                 <form action="{{route('delUser', $item->id)}}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn-white btn btn-xs" onclick="return confirm('Bạn có chắc chắn muốn xóa {{ $item->username }}?')">Xoá </button>
+                                                <button type="submit" class="btn-white btn btn-xs" onclick="return confirmDel()">Xoá </button>
                                                 </form>
                                             </div>
                                         </td>

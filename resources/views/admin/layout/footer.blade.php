@@ -141,7 +141,11 @@
    </script>
 
    {{-- mini function section --}}
-
+<script>
+    function confirmDel(){
+        return confirm('Bạn chắc chắn xoá không ')
+    }
+</script>
 
    </body>
 

@@ -137,7 +137,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn-white btn btn-xs"
-                                                        onclick="return confirm('Ban chac chan xoa {{ $pro->name }}')">Xoá</button>
+                                                        onclick="return confirmDel()">Xoá</button>
                                                 </form>
                                             </div>
                                         </td>

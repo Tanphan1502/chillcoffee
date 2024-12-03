@@ -90,4 +90,7 @@ Route::DELETE('/admin/product/delete/{id}',[ProductController::class,'delete'])-
 
 //categories
 Route::get('/admin/category', [CategoryController::class, 'index'])->name('category');
+Route::get('admin/category/edit/{id}',[CategoryController::class,'editCat'])->name('editCat');
+Route::PUT('/admin/category/update/{id}',[CategoryController::class,'updateCat'])->name('updateCat');
 Route::POST('/admin/category/add',[CategoryController::class,'store'])->name('addCat');
+Route::DELETE('/admin/category/delete/{id}', [CategoryController::class,'delete'])->name('delCat');

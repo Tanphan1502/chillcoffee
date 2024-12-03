@@ -3,19 +3,20 @@
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
         <div class="ibox-content m-b-sm border-bottom">
             <div class="row">
-                <form action="{{ route('addCat') }}" method="POST">
+                <form action="{{ route('updateCat', $cat->id) }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="name">Loại sản phẩm</label>
-                            <input type="text" id="name" name="name" value="" placeholder="Loại sản phẩm"
+                            <input type="text" id="name" name="name" value="{{$cat->name}}" placeholder="Loại sản phẩm"
                                 class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="description">Mô tả ngắn</label>
-                            <input type="text" id="description" name="description" value=""
+                            <input type="text" id="description" name="description" value="{{$cat->description}}"
                                 placeholder="Mô tả ngắn" class="form-control">
                         </div>
                     </div>
@@ -30,15 +31,14 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-
-                            <button type="submit" class=" col-sm-4 form-control btn-primary">Thêm mới </button>
+                            <button type="submit" class=" col-sm-4 form-control btn-primary">Cập nhật </button>
                         </div>
                     </div>
                 </form>
             </div>
 
         </div>
-
+{{-- 
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox">
@@ -62,26 +62,17 @@
                                     <tr>
                                         <td>{{ $cat->name }}</td>
                                         <td>{{ $cat->description }}</td>
-                                        <td>
-                                            @if ($cat->status ==='Active')
-                                                <span class="label label-primary">Hiện</span>
-                                            @else
-                                                <span class="label label-danger">Ẩn</span>
-                                            @endif
-                                           
-                                        </td>
+                                        <td><span class="label label-danger">{{ $cat->status }}</span></td>
                                         <td class="text-right">
                                             <div class="btn-group">
-                                                <form action="{{ route('editCat',$cat->id) }}" method="GET" style="display: inline">
-                                                    <button class="btn-white btn btn-xs">Sửa</button>
-                                                </form>
-                                                <form action="{{ route('delCat', $cat->id) }}" method="POST"  style="display: inline">
+
+                                                <button class="btn-white btn btn-xs">Sửa</button>
+                                                <form action="{{route('delCat', $cat->id)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn-white btn btn-xs"
-                                                        onclick="return confirmDel()">Xoá</button>
+                                                    <button type="submit" class="btn-white btn btn-xs" onclick="confirmDel()">Xoá</button>
                                                 </form>
-
+                                                
                                             </div>
                                         </td>
                                     </tr>
@@ -100,7 +91,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
     </div>
