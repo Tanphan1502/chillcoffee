@@ -17,24 +17,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\ProductCotroller;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -82,14 +67,19 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->middleware('adm
     // Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard');
     // Route::resource('users', 'UserController');
 });
+// index metric
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/user', [UserController::class, 'index'])->name('user');
 Route::get('/admin/order', [AdminController::class, 'orderList'])->name('order');
-Route::get('/admin/product', [ProductCotroller::class, 'index'])->name('product');
+Route::get('/admin/product', [ProductController::class, 'index'])->name('product');
 Route::get('/admin/category', [AdminController::class, 'categoryList'])->name('category');
-
+//user
 Route::get('/admin/user/edit/{id}',[Usercontroller::class,'editform'])->name('editform');
-
 Route::post('/admin/user/create',[UserController::class,'store'])->name('addUser');
 Route::PUT('/admin/user/edit/{id}',[UserController::class,'update'])->name("update");
 Route::DELETE('/admin/user/delete/{id}',[UserController::class, 'delete'])->name('delUser');
+//product
+Route::GET('/admin/product/edit/{id}',[ProductController::class, 'editPro'])->name('editPro');
+Route::POST('/admin/product/addpro', [ProductController::class,'store'])->name('addPro');
+Route::PUT('/admin/product/edit/{id}', [ProductController::class,'update'])->name('update');
+Route::DELETE('/admin/product/delete/{id}',[ProductController::class,'delete'])->name('delPro');

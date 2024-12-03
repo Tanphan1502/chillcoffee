@@ -38,8 +38,8 @@ class UserController extends Controller
         
     }
 //edit user form
-    public function editform($usr_id){
-        $user = $this->userRepository->find($usr_id);
+    public function editform($id){
+        $user = $this->userRepository->find($id);
         return view('admin.pages.editUser',compact('user'));
     }
 

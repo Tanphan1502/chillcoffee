@@ -99,7 +99,7 @@
                                     <tr>
                                         <td>
                                             {{ $item->username }}
-                                             {{$item->usr_id}}
+                                            
                                         </td>
                                         <td>
 

@@ -13,14 +13,14 @@ class Product extends Model
     protected $table = 'products';
 
     // Khóa chính của bảng
-    protected $primaryKey = 'prd_id';
+    //protected $primaryKey = 'id';
 
     // Cho phép Eloquent tự động thêm timestamp nếu bảng không có cột `created_at` và `updated_at`
     public $timestamps = false;
 
     // Các cột có thể điền dữ liệu (Mass Assignment)
     protected $fillable = [
-        'prd_id', 'name', 'img', 'price', 'quantity', 'type', 'description'
+        'id', 'name', 'img', 'price', 'quantity', 'type', 'description'
     ];
 
     /**
@@ -32,7 +32,7 @@ class Product extends Model
      */
     public function scopeNewProducts($query, $limit)
     {
-        return $query->orderBy('prd_id', 'desc')->limit($limit);
+        return $query->orderBy('id', 'desc')->limit($limit);
     }
 
     /**

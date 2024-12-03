@@ -28,15 +28,6 @@
                                kê</span></a>
                    </li>
                    </li>
-
-                   <li>
-                       <a href="#"><i class="fa fa-list-ol"></i> <span class="nav-label">Danh mục-Sản
-                               phẩm</span><span class="fa arrow"></span></a>
-                       <ul class="nav nav-second-level collapse">
-                           <li><a href="{{ route('product') }}">Danh sách sản phẩm</a></li>
-                           <li><a href="{{ route('category') }}">Danh sách loại</a></li>
-                       </ul>
-                   </li>
                    <li>
                        <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Tài khoản</span><span
                                class="fa arrow"></span></a>
@@ -48,6 +39,15 @@
                            </li>
                        </ul>
                    </li>
+                   <li>
+                       <a href="#"><i class="fa fa-list-ol"></i> <span class="nav-label">Danh mục-Sản
+                               phẩm</span><span class="fa arrow"></span></a>
+                       <ul class="nav nav-second-level collapse">
+                           <li><a href="{{ route('product') }}">Danh sách sản phẩm</a></li>
+                           <li><a href="{{ route('category') }}">Danh sách loại</a></li>
+                       </ul>
+                   </li>
+
                    <li>
                        <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Đơn
                                hàng</span><span class="fa arrow"></span></a>

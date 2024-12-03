@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories;
+
 use App\Models\Product;
 use App\Repositories\RepositoryInterface\ProductRepositoryInterface;
 

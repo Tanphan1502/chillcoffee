@@ -65,7 +65,7 @@
                         <div class="form-group">
                             <label class="control-label" for="status">Trạng thái</label>
                             <select name="status" id="status" class="form-control">
-                                
+                                 <option value="{{$user->status}}" selected></option>
                                 <option value="inactive" >Chờ kích hoạt</option>
                                 <option value="active">Kích hoạt</option>
 
