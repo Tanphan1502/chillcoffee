@@ -20,7 +20,7 @@ class Product extends Model
 
     // Các cột có thể điền dữ liệu (Mass Assignment)
     protected $fillable = [
-        'id', 'name', 'img', 'price', 'quantity', 'type', 'description'
+        'id', 'name', 'category_id','img', 'price', 'quantity', 'type', 'description'
     ];
 
     /**

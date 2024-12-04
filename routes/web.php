@@ -72,33 +72,32 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
 
     // index metric
-    Route::get('/admin/order', [AdminController::class, 'orderList'])->name('order');
+    Route::get('/order', [AdminController::class, 'orderList'])->name('order');
 
     //-->user
-    Route::get('/admin/user', [UserController::class, 'index'])->name('user');
-    Route::get('/admin/user/edit/{id}', [Usercontroller::class, 'editUser'])->name('editUser');
-    Route::post('/admin/user/create', [UserController::class, 'store'])->name('addUser');
-    Route::PUT('/admin/user/edit/{id}', [UserController::class, 'updateUser'])->name("updateUser");
-    Route::DELETE('/admin/user/delete/{id}', [UserController::class, 'delete'])->name('delUser');
-
+    Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::get('/user/edit/{id}', [Usercontroller::class, 'editUser'])->name('editUser');
+    Route::post('/user/create', [UserController::class, 'store'])->name('addUser');
+    Route::PUT('/user/edit/{id}', [UserController::class, 'updateUser'])->name("updateUser");
+    Route::DELETE('/user/delete/{id}', [UserController::class, 'delete'])->name('delUser');
 
     //-->product
-    Route::get('/admin/product', [ProductController::class, 'index'])->name('product');
-    Route::GET('/admin/product/edit/{id}', [ProductController::class, 'editPro'])->name('editPro');
-    Route::POST('/admin/product/addpro', [ProductController::class, 'store'])->name('addPro');
-    Route::PUT('/admin/product/edit/{id}', [ProductController::class, 'updatePro'])->name('updatePro');
-    Route::DELETE('/admin/product/delete/{id}', [ProductController::class, 'delete'])->name('delPro');
+    Route::get('/product', [ProductController::class, 'index'])->name('product');
+    Route::GET('/product/edit/{id}', [ProductController::class, 'editPro'])->name('editPro');
+    Route::POST('/product/addpro', [ProductController::class, 'store'])->name('addPro');
+    Route::PUT('/product/edit/{id}', [ProductController::class, 'updatePro'])->name('updatePro');
+    Route::DELETE('/product/delete/{id}', [ProductController::class, 'delete'])->name('delPro');
 
     //-->categories
-    Route::get('/admin/category', [CategoryController::class, 'index'])->name('category');
+    Route::get('/category', [CategoryController::class, 'index'])->name('category');
     Route::get('admin/category/edit/{id}', [CategoryController::class, 'editCat'])->name('editCat');
-    Route::PUT('/admin/category/update/{id}', [CategoryController::class, 'updateCat'])->name('updateCat');
-    Route::POST('/admin/category/add', [CategoryController::class, 'store'])->name('addCat');
-    Route::DELETE('/admin/category/delete/{id}', [CategoryController::class, 'delete'])->name('delCat');
+    Route::PUT('/category/update/{id}', [CategoryController::class, 'updateCat'])->name('updateCat');
+    Route::POST('/category/add', [CategoryController::class, 'store'])->name('addCat');
+    Route::DELETE('/category/delete/{id}', [CategoryController::class, 'delete'])->name('delCat');
 
     //-->blog
-    Route::get('/admin/blog', [AdminBlogController::class, 'index'])->name('blogList');
-    Route::get('/admin/newpost', [AdminBlogController::class, 'newPost'])->name('newPost');
-    Route::POST('/admin/addBlog', [AdminBlogController::class, 'addBlog'])->name('addBlog');
+    Route::get('/blog', [AdminBlogController::class, 'index'])->name('blogList');
+    Route::get('/newpost', [AdminBlogController::class, 'newPost'])->name('newPost');
+    Route::POST('/addBlog', [AdminBlogController::class, 'addBlog'])->name('addBlog');
 });
 

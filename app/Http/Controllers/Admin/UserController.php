@@ -22,19 +22,37 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-        // create new user with repository
-        $this->userRepository->create([
-            'username'=>$request->username,
-            'email'=>$request->email,
-            'address'=>$request->address,
-            'phonenumber'=>$request->phonenumber,
-            'password'=>bcrypt($request->password),
-            'role'=>$request->role,
-            'status'=>$request->status
-            
-        ]);
-        return redirect()->route('user')->with
-        ('success','Thêm người dùng thành công');
+        // User data
+        $userData =
+        [
+            'username' => $request->username,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phonenumber' => $request->phonenumber,
+            'password' => bcrypt($request->password),
+            'role' => $request->role,
+            'status' => $request->status,
+           
+        ];
+       
+   
+
+            // Xử lý hình ảnh
+            if ($request->hasFile('image')) {
+            //     $image = $request->file('image');
+            //     $filename = time() . '_' . $image->getClientOriginalName();
+            //     $image->move(public_path('images/users'), $filename); // Lưu hình ảnh vào thư mục
+            //     $userData['avatar'] = 'images/users/' . $filename; // Lưu đường dẫn vào trường avatar
+            // 
+            $originalName = $request->file('image')->getClientOriginalName();
+            $filename = time() . "-" . $originalName;
+            $request->file('image')->move(public_path('images/users'), $filename);
+            // Cập nhật đường dẫn hình ảnh
+            $userData['avatar'] = 'images/users/' . $filename;
+        };
+       
+        $this->userRepository->create($userData);
+        return redirect()->route('user')->with('success','Thêm người dùng thành công');
         
     }
 //edit user form
@@ -47,7 +65,7 @@ class UserController extends Controller
         $user = $this->userRepository->find($id);
         //xac thuc
         //cap nhat
-        $data = [
+        $userData = [
             'username' => $request->username,
             'email' => $request->email,
             'address' => $request->address,
@@ -55,13 +73,22 @@ class UserController extends Controller
             'role' => $request->role,
             'status' => $request->status
         ];
+
+        // Xử lý hình ảnh
+        if ($request->hasFile('image')) {
+            $originalName = $request->file('image')->getClientOriginalName();
+            $filename = time() . "-" . $originalName;
+            $request->file('image')->move(public_path('images/users'), $filename);
+            // Cập nhật đường dẫn hình ảnh
+            $userData['avatar'] = 'images/users/' . $filename;
+        };
+
         // Chỉ cập nhật password nếu có thay đổi
         if ($request->filled('password')) {
-            $data['password'] = bcrypt($request->password);
+            $userData['password'] = bcrypt($request->password);
         }
 
-        $this->userRepository->update($id, $data);
-
+        $this->userRepository->update($id, $userData);
         return redirect()->route('user')->with('success','Cập nhật thành công');
     }
 

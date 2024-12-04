@@ -13,7 +13,7 @@
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Chào mừng đến Admin 1</span>
+                    <span class="m-r-sm text-muted welcome-message">Chào mừng đến {{ Auth::user()->username }}</span>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">

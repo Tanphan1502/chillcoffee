@@ -2,10 +2,11 @@
 @section('content')
     <!-- sử dụng hàm old() để lưu lại giá trị khi người dùng gửi form lỗi -->
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+        {{-- form add new user start --}}
         <div class="ibox-content m-b-sm border-bottom">
-            {{-- form add new user start --}}
-            <form action="{{ route('addUser') }}" method="post">
+            <form action="{{ route('addUser') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('POST')
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
@@ -13,7 +14,6 @@
                             <input type="text" id="username" name="username" value="{{ old('username') }}"
                                 placeholder="Tên Người dùng" class="form-control" required>
                         </div>
-
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
@@ -39,14 +39,14 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="password">Mật khẩu</label>
-                            <input type="password" id="password" name="password" value="" placeholder="Mật khẩu"
+                            <input type="password" id="password" name="password" placeholder="Mật khẩu"
                                 class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="password_confirmation">Nhập lại mật khẩu</label>
-                            <input type="password" id="password_confirmation" name="password_confirmation" value=""
+                            <input type="password" id="password_confirmation" name="password_confirmation"
                                 placeholder="Nhập lại mật khẩu" class="form-control">
                         </div>
                     </div>
@@ -69,11 +69,17 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class=" form-control-sm btn-primary pull-right ml-10">Thêm Nhanh </button>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="control-label" for="image">Hình ảnh</label>
+                            <input type="file" id="image" name="image" accept="image/*" class="form-control">
+                        </div>
+                    </div>
+                    <button type="submit" class=" btn btn-primary ">Thêm Nhanh </button>
                 </div>
             </form>
-            {{-- form add new user end --}}
         </div>
+        {{-- form add new user end --}}
 
         <div class="row">
             <div class="col-lg-12">
@@ -85,6 +91,7 @@
                                 <tr>
 
                                     <th data-toggle="true">Tên Người dùng</th>
+                                    <th>Avatar</th>
                                     <th data-hide="phone">Vị trí</th>
                                     <th data-hide="phone">Điện thoại</th>
                                     <th data-hide="email">Email</th>
@@ -99,7 +106,11 @@
                                     <tr>
                                         <td>
                                             {{ $item->username }}
-                                            
+
+                                        </td>
+                                        <td>
+                                            <img class="img-circle" src="{{ asset($item->avatar) }}"
+                                                alt="{{ $item->avatar }}" style="width: 50px; height: 50px;">
                                         </td>
                                         <td>
 
@@ -129,13 +140,16 @@
                                         </td>
                                         <td class="text-right">
                                             <div class="btn-group">
-                                                <form action="{{route('editUser', $item->id)}}" method="GET" style="display:inline;">                                        
-                                                <button class="btn-white btn btn-xs">Sửa</button>
-                                               </form>
-                                                <form action="{{route('delUser', $item->id)}}" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn-white btn btn-xs" onclick="return confirmDel()">Xoá </button>
+                                                <form action="{{ route('editUser', $item->id) }}" method="GET"
+                                                    style="display:inline;">
+                                                    <button class="btn-white btn btn-xs">Sửa</button>
+                                                </form>
+                                                <form action="{{ route('delUser', $item->id) }}" method="POST"
+                                                    style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn-white btn btn-xs"
+                                                        onclick="return confirmDel()">Xoá </button>
                                                 </form>
                                             </div>
                                         </td>
@@ -157,6 +171,4 @@
             </div>
         </div>
     </div>
-
-   
 @endsection

@@ -25,9 +25,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //validate sau
-       
-       
-       
+
         // Tao san pham moi
         $productData =
         [

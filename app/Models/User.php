@@ -19,7 +19,7 @@ class User extends Authenticatable
 
     // Các thuộc tính có thể được gán hàng loạt
     protected $fillable = [
-        'id', 'username', 'email', 'address', 'phonenumber', 'password', 'role','status'
+        'id', 'username','avatar' ,'email', 'address', 'phonenumber', 'password', 'role','status'
     ];
 
     // Đảm bảo password và confirm password được mã hóa

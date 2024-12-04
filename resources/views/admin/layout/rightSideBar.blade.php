@@ -4,12 +4,11 @@
                    <li class="nav-header">
                        <div class="dropdown profile-element">
                            <span>
-                               <img alt="image" class="img-circle" src="{{ asset('css2/img/profile_small.jpg') }}" />
+                               <img alt="image" style="width: 100px; height: 100px;" class="img-circle" src="{{ asset(Auth::user()->avatar) }}" />
                            </span>
                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                               <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Admin
-                                           1</strong>
-                                   </span> <span class="text-muted text-xs block">Quản Trị Viên <b
+                               <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ Auth::user()->username }}</strong>
+                                   </span> <span class="text-muted text-xs block">{{ Auth::user()->role }}<b
                                            class="caret"></b></span> </span> </a>
                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                <li><a href="profile.html">Hồ sơ</a></li>

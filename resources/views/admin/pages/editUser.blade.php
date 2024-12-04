@@ -3,7 +3,7 @@
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
         <div class="ibox-content m-b-sm border-bottom">
             {{-- form add new user start --}}
-            <form action="{{ route('updateUser', $user->id) }}" method="post">
+            <form action="{{ route('updateUser', $user->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -70,6 +70,12 @@
                                 <option value="active">Kích hoạt</option>
 
                             </select>
+                        </div>
+                    </div>
+                     <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="control-label" for="image">Hình ảnh</label>
+                            <input type="file" id="image" name="image" accept="image/*" class="form-control">
                         </div>
                     </div>
                         <button type="submit" class=" form-control-sm btn-primary pull-right ml-10">Cap nhat </button>
