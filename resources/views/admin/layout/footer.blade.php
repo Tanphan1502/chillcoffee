@@ -139,7 +139,17 @@
            });
        });
    </script>
+   
+ <!-- SUMMERNOTE -->
+<script src="{{asset('css2/js/plugins/summernote/summernote.min.js')}}"></script>
 
+    <script>
+        $(document).ready(function(){
+
+            $('.summernote').summernote();
+
+       });
+    </script>
    {{-- mini function section --}}
 <script>
     function confirmDel(){

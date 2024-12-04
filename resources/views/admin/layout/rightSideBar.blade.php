@@ -60,8 +60,8 @@
                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Bài viết</span><span
                                class="fa arrow"></span></a>
                        <ul class="nav nav-second-level collapse">
-                           <li><a href="form_basic.html">Tạo mới</a></li>
-                           <li><a href="form_advanced.html">Danh sách bài viết</a></li>
+                           <li><a href="{{route('newPost')}}">Tạo mới</a></li>
+                           <li><a href="{{route('blogList')}}">Danh sách bài viết</a></li>
                        </ul>
                    </li>
 

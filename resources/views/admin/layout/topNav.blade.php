@@ -115,9 +115,11 @@
 
 
                 <li>
-                    <a href="login.html">
-                        <i class="fa fa-sign-out"></i> Đăng xuất
-                    </a>
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button type="submit"><i class="fa fa-sign-out"></i> Đăng xuất</button>
+                    </form>
+                   
                 </li>
                 <li>
                     <a class="right-sidebar-toggle">

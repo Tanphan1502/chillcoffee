@@ -10,4 +10,6 @@
     <link href="{{ asset('css2/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css2/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css2/css/style.css') }}" rel="stylesheet">
+    <link href="{{asset('css2/plugins/summernote/summernote.css')}}" rel="stylesheet">
+    <link href="{{asset('css2/plugins/summernote/summernote-bs3.css')}}" rel="stylesheet">
 </head>

@@ -21,12 +21,18 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
-        foreach ($guards as $guard) {
+        foreach ($guards as $guard) { 
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                $user = Auth::guard($guard)->user(); // Lấy thông tin người dùng đã đăng nhập
+                // Kiểm tra vai trò người dùng
+                if ($user->role === 'admin') {
+                    return redirect('/admin'); // Chuyển hướng đến dashboard admin
+                } else {
+                    return redirect(RouteServiceProvider::HOME); // Chuyển hướng đến trang chính cho người dùng bình thường
             }
         }
 
         return $next($request);
     }
+}
 }
