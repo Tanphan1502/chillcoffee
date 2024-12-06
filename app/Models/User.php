@@ -10,13 +10,19 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
-    // Tắt tính năng tự động cập nhật created_at và updated_at
-    public $timestamps = false;
-
     // Đặt tên bảng tương ứng (nếu không phải là "users")
     protected $table = 'users';
+    //Xac dinh moi quan he voi bang order
+    public function orders()
+    {
+        return $this->hasMany(Orders::class, 'user_id');
+    }
 
+    // Ba tính năng tự động cập nhật created_at và updated_at
+    //public $timestamps = true;
+
+
+    
     // Các thuộc tính có thể được gán hàng loạt
     protected $fillable = [
         'id', 'username','avatar' ,'email', 'address', 'phonenumber', 'password', 'role','status'

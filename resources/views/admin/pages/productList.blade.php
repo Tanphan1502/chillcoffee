@@ -5,7 +5,12 @@
             {{-- form add product start  --}}
             <div class="row">
                 <form action="{{ route('addPro') }}" method="POST" enctype="multipart/form-data">
+
+                    {{-- prepair area  --}}
                     @csrf
+                    @method('POST')
+
+                    {{-- Product name field  --}}
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="name">Tên sản phẩm</label>
@@ -13,6 +18,7 @@
                                 class="form-control">
                         </div>
                     </div>
+                    {{-- price field  --}}
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label class="control-label" for="price">Giá</label>
@@ -20,6 +26,7 @@
                                 class="form-control">
                         </div>
                     </div>
+                    {{-- quantity field  --}}
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label class="control-label" for="quantity">Số lượng</label>
@@ -27,6 +34,7 @@
                                 class="form-control">
                         </div>
                     </div>
+                    {{-- Status field  --}}
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label class="control-label" for="status">Trạng thái</label>
@@ -36,33 +44,35 @@
                             </select>
                         </div>
                     </div>
+                    {{-- hot product field  --}}
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label class="control-label" for="hot">Nổi bật</label>
                             <select name="hot" id="hot" class="form-control">
-                                <option value="1" selected>Hiện</option>
-                                <option value="0">Ẩn</option>
+                                <option value="0" selected>Không</option>
+                                <option value="1">Có</option>
                             </select>
                         </div>
                     </div>
+                    {{-- category field  --}}
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <label class="control-label" for="type">Loại</label>
-                            <select name="type" id="type" class="form-control">
-                                <option value="1" selected>Drink</option>
-                                <option value="0">Ẩn</option>
+                            <label class="control-label" for="category_id">Loại</label>
+                            <select name="category_id" id="category_id" class="form-control">
+                                @foreach ($categories as $cat)
+                                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
-
+                    {{-- image field --}}
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="image">Hình ảnh</label>
                             <input type="file" id="image" name="image" accept="image/*" class="form-control">
-                            <!--accept="image/*" de trinh duyet chi hien thi file hinh anh tang trai nghiem ng dung-->
                         </div>
                     </div>
-
+                    {{-- descriptio field  --}}
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="description">Mô tả ngắn</label>
@@ -70,9 +80,15 @@
                                 placeholder="Mô tả sản phẩm" class="form-control">
                         </div>
                     </div>
-
-                    <button type="submit" class=" form-control-sm btn-primary pull-right ml-10">Thêm mới </button>
+                    {{-- button field  --}}
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <button type="submit" class=" btn btn-primary ">Thêm Nhanh </button>
+                        </div>
+                    </div>
                 </form>
+
+
             </div>
         </div>
         {{-- form add product end  --}}
@@ -111,9 +127,9 @@
                                             <img src="{{ asset($pro->img) }}" alt="{{ $pro->img }}"
                                                 style="width: 50px; height: 50px;">
                                         </td>
-                                        <td>
-                                            {{ $pro->type }}
-                                        </td>
+
+                                        <td>{{ $pro->category->name }}</td>
+
                                         <td>
                                             {{ $pro->description }}
                                         </td>
@@ -124,12 +140,26 @@
                                             {{ $pro->quantity }}
                                         </td>
                                         <td>
-                                            <span class="label label-primary" value="">{{ $pro->status }}</span>
+                                            @if ($pro->status === 0)
+                                                <span class="label label-danger">Ẩn</span>
+                                            @else
+                                                <span class="label label-primary">Hiện</span>
+                                            @endif
+
                                         </td>
-                                        <td>{{ $pro->hot }}</td>
+                                        <td>
+                                            @if ($pro->hot === 0)
+                                                <span class="label label-warning">Không</span>
+                                            @else
+                                                <span class="label label-primary">Có</span>
+                                            @endif
+
+
+
+                                        </td>
                                         <td class="text-right"style="display:flex">
                                             <div class="btn-group">
-                                                <form action="{{route('editPro',$pro->id)}}"style="display:inline" >
+                                                <form action="{{ route('editPro', $pro->id) }}"style="display:inline">
                                                     <button type="submit" class="btn-white btn btn-xs">Sửa</button>
                                                 </form>
                                                 <form action="{{ route('delPro', $pro->id) }}" method="POST"
@@ -159,4 +189,6 @@
         </div>
         {{-- show data section end --}}
     </div>
+
+    <!-- resources/views/products/index.blade.php -->
 @endsection

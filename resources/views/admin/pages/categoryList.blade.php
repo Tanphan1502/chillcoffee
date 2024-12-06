@@ -30,8 +30,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-
-                            <button type="submit" class=" col-sm-4 form-control btn-primary">Thêm mới </button>
+                             <button type="submit" class=" btn btn-primary ">Thêm Nhanh </button>
                         </div>
                     </div>
                 </form>

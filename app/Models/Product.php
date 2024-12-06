@@ -11,16 +11,28 @@ class Product extends Model
 
     // Tên bảng trong CSDL
     protected $table = 'products';
+    // moi quan he voi category
+    public function category(){
+        return $this->belongsTo(Category::class,'category_id');
+    }
 
+    //moi quan he voi order_item
+    public function orderItem(){
+        return $this->hasMany(orders_items::class,'pro_id');
+    }
+
+
+
+    
     // Khóa chính của bảng
     //protected $primaryKey = 'id';
 
     // Cho phép Eloquent tự động thêm timestamp nếu bảng không có cột `created_at` và `updated_at`
-    public $timestamps = false;
+  //  public $timestamps = false;
 
     // Các cột có thể điền dữ liệu (Mass Assignment)
     protected $fillable = [
-        'id', 'name', 'category_id','img', 'price', 'quantity', 'type', 'description'
+        'id', 'name','status','hot','category_id','img', 'price', 'quantity', 'description','create_at','updated_at'
     ];
 
     /**

@@ -3,22 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\RepositoryInterface\CategoryRepositoryInterface;
 use App\Repositories\RepositoryInterface\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
+
+
 class ProductController extends Controller
 {
+    protected $categoryRepository;
     protected $productRepository;
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(CategoryRepositoryInterface $categoryRepository,ProductRepositoryInterface $productRepository)
     {
         $this->productRepository =$productRepository;
+        $this->categoryRepository=$categoryRepository;
     }
-
     //Show sản phẩm
     public function index(){
         $i=0;
         $pro = $this->productRepository->all();
-        return view('admin.pages.productList', compact('pro','i'));
+        $categories = $this->categoryRepository->getAllCategoriesWithProducts();
+     
+        return view('admin.pages.productList', compact('pro','i','categories'));
     }
 
     //Thêm sản phẩm mới
@@ -35,7 +41,7 @@ class ProductController extends Controller
             'status'=>$request->status,
             'hot'=>$request->hot,
             'description'=>$request->description,
-            'type'=>$request->type,
+            'category_id'=>$request->category_id,
             
         ];
          // xu ly path images 
@@ -43,25 +49,26 @@ class ProductController extends Controller
             $originalName = $request->file('image')->getClientOriginalName();
             $filename = time() . "-" . $originalName;
             $request->file('image')->move(public_path('images/products'), $filename);
-            // Cập nhật đường dẫn hình ảnh
             $productData['img'] = 'images/products/' . $filename;
         }
-        // dd($imagePath);
+        ($productData);
         //sử dụng phương thức create trong repository để tạo mới sp
         $this->productRepository->create($productData);
         return redirect()->route('product')->with('success', 'Thêm sản phẩm thành công');
     }
 
+
+// --> Update Product
     public function editPro($id){
+        $categories = $this->categoryRepository->getAllCategoriesWithProducts();
         $pro= $this->productRepository->find($id);
-        return view('admin.pages.editPro',compact('pro'));
+        return view('admin.pages.editPro',compact('pro','categories'));
     }
-   
     public function updatePro(Request $request, $id)
     {
-        //xac thuc du lieu
-        //chuan bi du lieu cap nhat
+        //xac thuc du lieu lam sau
         $pro = $this->productRepository->find($id);
+        $categories = $this->categoryRepository->getAllCategoriesWithProducts();
        
         //data
         $productData = 
@@ -72,8 +79,9 @@ class ProductController extends Controller
             'status' => $request->status,
             'hot' => $request->hot,
             'description' => $request->description,
-            'type' => $request->type,
+            'category_id' => $request->category_id,
         ];
+        // dd($productData);
         //xu ly anh
         if ($request->hasFile('image')) {
             $originalName = $request->file('image')->getClientOriginalName();
@@ -94,4 +102,5 @@ class ProductController extends Controller
         }
         
     }
+
 }

@@ -11,4 +11,9 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     {
         parent::__construct($model);
     }
+    //Lấy một sản phẩm cụ thể cùng với thông tin danh mục của nó dựa trên id.
+    public function getAllCategoriesWithProducts()
+    {
+        return $this->model->with('product')->get();
+    }
 }

@@ -23,7 +23,11 @@
                                     class="form-control">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary fa-pull-right">Tìm đơn hàng</button>
+                        <div class="col-sm-4">
+                        <div class="form-group">
+                             <button type="submit" class=" btn btn-primary ">Tìm đơn hàng </button>
+                        </div>
+                    </div>
                     </div>
                     <!-- <div class="row">
                         <div class="col-sm-4">

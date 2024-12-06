@@ -75,7 +75,12 @@
                             <input type="file" id="image" name="image" accept="image/*" class="form-control">
                         </div>
                     </div>
-                    <button type="submit" class=" btn btn-primary ">Thêm Nhanh </button>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             <button type="submit" class=" btn btn-primary ">Thêm Nhanh </button>
+                        </div>
+                    </div>
+                   
                 </div>
             </form>
         </div>

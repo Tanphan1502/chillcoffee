@@ -32,6 +32,7 @@
                             @if (session('user_id')) <!-- Kiểm tra xem session có tồn tại không -->
                                 <!-- Hiển thị mục Admin nếu người dùng đã đăng nhập và là Admin -->
                                 @if (session('user_role') == 'admin') 
+                              
                                     <a class="dropdown-item" href="{{ route('admin') }}" class="nav-link">Admin</a>
                                 @endif
                                 <form action="{{ route('logout') }}" method="POST" style="display: none;" id="logout-form">

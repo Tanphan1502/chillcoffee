@@ -169,9 +169,9 @@
                     <div class="col-md-3">
                         <div class="menu-entry">
                             <!-- Hiển thị ảnh sản phẩm -->
-                            <a href="{{ route('detailproduct', ['id' => $product->prd_id]) }}" class="img" style="background-image: url('/images/{{ $product->img }}');"></a>
+                            <a href="{{ route('detailproduct', ['id' => $product->id]) }}" class="img" style="background-image: url('/images/{{ $product->img }}');"></a>
                             <div class="text text-center pt-4">
-                                <h3><a href="{{ route('detailproduct', ['id' => $product->prd_id]) }}">{{ $product->name }}</a></h3>
+                                <h3><a href="{{ route('detailproduct', ['id' => $product->id]) }}">{{ $product->name }}</a></h3>
                                 <!-- Hiển thị mô tả sản phẩm -->
                                 <p>{{ $product->description }}</p>
                                 <!-- Hiển thị giá sản phẩm -->
@@ -180,7 +180,7 @@
                                 <p>
                                     <a href="#" 
                                         class="btn btn-primary btn-outline-primary add-to-cart" 
-                                        data-id="{{ $product->prd_id }}" 
+                                        data-id="{{ $product->id }}" 
                                         data-name="{{ $product->name }}" 
                                         data-price="{{ $product->price }}" 
                                         data-img="{{ $product->img }}">
