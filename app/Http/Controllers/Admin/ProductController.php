@@ -11,20 +11,23 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    
     protected $categoryRepository;
     protected $productRepository;
     public function __construct(CategoryRepositoryInterface $categoryRepository,ProductRepositoryInterface $productRepository)
     {
         $this->productRepository =$productRepository;
         $this->categoryRepository=$categoryRepository;
+        
     }
     //Show sản phẩm
     public function index(){
         $i=0;
+        $title = 'Danh sách sản phẩm';
         $pro = $this->productRepository->all();
         $categories = $this->categoryRepository->getAllCategoriesWithProducts();
      
-        return view('admin.pages.productList', compact('pro','i','categories'));
+        return view('admin.pages.productList', compact('pro','i','categories','title'));
     }
 
     //Thêm sản phẩm mới
@@ -60,13 +63,15 @@ class ProductController extends Controller
 
 // --> Update Product
     public function editPro($id){
+        $title = 'Cập nhật thông tin sản phẩm';
         $categories = $this->categoryRepository->getAllCategoriesWithProducts();
         $pro= $this->productRepository->find($id);
-        return view('admin.pages.editPro',compact('pro','categories'));
+        return view('admin.pages.editPro',compact('pro','categories','title'));
     }
     public function updatePro(Request $request, $id)
     {
         //xac thuc du lieu lam sau
+        $title = 'Cập nhật thông tin sản phẩm';
         $pro = $this->productRepository->find($id);
         $categories = $this->categoryRepository->getAllCategoriesWithProducts();
        

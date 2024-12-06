@@ -17,8 +17,9 @@ class CategoryController extends Controller
     //Show
     public function index()
     {
+        $title = 'Danh sách loại';
         $cat = $this->categoryRepository->all();
-        return view('admin.pages.categoryList', compact('cat'));
+        return view('admin.pages.categoryList', compact('cat','title'));
     }
 
     //Thêm mới 
@@ -35,8 +36,9 @@ class CategoryController extends Controller
 
     public function editCat($id)
     {
+        $title = 'Cập nhật thông tin loại';
         $cat = $this->categoryRepository->find($id);
-        return view('admin.pages.editCat',compact('cat'));
+        return view('admin.pages.editCat',compact('cat','title'));
     }
     public function updateCat(Request $request, $id)
     {

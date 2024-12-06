@@ -9,7 +9,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.index');
+        $title = 'Thống kê';
+        return view('admin.pages.index', compact('title'));
     }
     public function productList(){
         return view('admin.pages.productList');

@@ -32,7 +32,7 @@
                                class="fa arrow"></span></a>
                        <ul class="nav nav-second-level collapse">
 
-                           <li><a href="#">Thêm mới</a></li>
+                           {{-- <li><a href="#">Thêm mới</a></li> --}}
                            <li>
                                <a href="{{ route('user') }}">Danh sách người dùng</a>
                            </li>

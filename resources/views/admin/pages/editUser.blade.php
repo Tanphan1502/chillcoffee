@@ -54,10 +54,17 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="role">Vị trí</label>
-                            <select name="role" id="status" class="form-control">
-                                
-                                <option value="admin" >Quản trị viên</option>
-                                <option value="user">Khách hàng</option>
+                            <select name="role" id="role" class="form-control">
+                                 <option value="{{ $user->role }}" selected>
+                                    @if ( $user->role === 'admin')
+                                                <span >Quản trị viên</span>
+                                                <option value="user" >Khách hàng</option>    
+                                    @else
+                                                <span>Khách hàng</span>
+                                                <option value="admin" >Quản trị viên</option>   
+                                    @endif
+                                </option>
+                               
                             </select>
                         </div>
                     </div>
@@ -65,20 +72,32 @@
                         <div class="form-group">
                             <label class="control-label" for="status">Trạng thái</label>
                             <select name="status" id="status" class="form-control">
-                                 <option value="{{$user->status}}" selected></option>
-                                <option value="inactive" >Chờ kích hoạt</option>
-                                <option value="active">Kích hoạt</option>
-
+                                <option value="{{$user->status}}" selected>
+                                    @if ($user->status === 'active')
+                                                <span >Kích hoạt</span>
+                                                <option value="Inactive" >Khoá</option>    
+                                    @else
+                                                <span>Khoá</span>
+                                                <option value="active" >Kích hoạt</option>   
+                                    @endif
+                                </option>
                             </select>
                         </div>
                     </div>
                      <div class="col-sm-4">
                         <div class="form-group">
+
                             <label class="control-label" for="image">Hình ảnh</label>
+                            <img src="{{ asset($user->avatar) }}" alt="{{ $user->avatar }}"  style="width: 50px; height: 50px; ">
                             <input type="file" id="image" name="image" accept="image/*" class="form-control">
                         </div>
                     </div>
-                        <button type="submit" class=" form-control-sm btn-primary pull-right ml-10">Cap nhat </button>
+                     <div class="col-sm-2 pull-right">
+                        <div class="form-group">
+                            <label class="control-label" for="description">,</label>
+                            <button type="submit" class=" btn btn-primary ">Cập Nhật </button>
+                        </div>
+                    </div>
                   
                 </div>
             </form>

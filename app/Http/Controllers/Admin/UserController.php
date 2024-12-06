@@ -17,8 +17,9 @@ class UserController extends Controller
     }
     public function index()
     {
+        $title = 'Danh sách người dùng';
         $user = $this->userRepository->all();
-        return view('admin.pages.userList', compact('user'));
+        return view('admin.pages.userList', compact('user','title'));
     }
     public function store(Request $request)
     {
@@ -39,11 +40,6 @@ class UserController extends Controller
 
             // Xử lý hình ảnh
             if ($request->hasFile('image')) {
-            //     $image = $request->file('image');
-            //     $filename = time() . '_' . $image->getClientOriginalName();
-            //     $image->move(public_path('images/users'), $filename); // Lưu hình ảnh vào thư mục
-            //     $userData['avatar'] = 'images/users/' . $filename; // Lưu đường dẫn vào trường avatar
-            // 
             $originalName = $request->file('image')->getClientOriginalName();
             $filename = time() . "-" . $originalName;
             $request->file('image')->move(public_path('images/users'), $filename);
@@ -58,7 +54,8 @@ class UserController extends Controller
 //edit user form
     public function editUser($id){
         $user = $this->userRepository->find($id);
-        return view('admin.pages.editUser',compact('user'));
+        $title = 'Cập nhật thông tin người dùng';
+        return view('admin.pages.editUser',compact('user','title'));
     }
 
     public function updateUser(Request $request, $id){

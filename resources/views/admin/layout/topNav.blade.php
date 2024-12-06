@@ -11,9 +11,10 @@
                     </div>
                 </form>
             </div>
+
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Chào mừng đến {{ Auth::user()->username }}</span>
+                    <span class="m-r-sm text-muted welcome-message">Xin chào {{ Auth::user()->username }}</span>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -133,14 +134,14 @@
         <div class="wrapper wrapper-content">
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>Danh sách người dùng</h2>
+                    <h2>{{$title}}</h2>
                     <ol class="breadcrumb">
                         <li>
-                            <a href="index.html">Trang chủ</a>
+                            <a href="{{route('admin')}}">Trang chủ</a>
                         </li>
 
                         <li class="active">
-                            <strong>Danh sách người dùng</strong>
+                            <strong>{{$title}}</strong>
                         </li>
                     </ol>
                 </div>
