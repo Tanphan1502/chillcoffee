@@ -141,20 +141,100 @@
    </script>
    
  <!-- SUMMERNOTE -->
-<script src="{{asset('css2/js/plugins/summernote/summernote.min.js')}}"></script>
+{{-- <script src="{{asset('css2/js/plugins/summernote/summernote.min.js')}}"></script> --}}
 
+{{-- 
     <script>
         $(document).ready(function(){
 
             $('.summernote').summernote();
 
        });
-    </script>
+    </script> --}}
    {{-- mini function section --}}
 <script>
     function confirmDel(){
         return confirm('Bạn chắc chắn xoá không ')
     }
+
+    // function dung de check cac field trong form
+    // const validations = 
+    // {
+    //     email:{
+    //         validate: validateEmail,
+    //         messageId: 'emailMessage'
+    //     },
+    //     userName:{
+    //         validate:validateuserName,
+    //         messageId: 'usenameMessage'
+    //     }
+    // };
+   
+    // function validateField(field) {
+    //     const value = document.getElementById(field + 'Field').value;
+    //     const validation = validations[field];
+    //     if (validation) {
+    //         const isValid = validation.validate(value);
+    //         toggleError(validation.messageId, !isValid);
+    //     }
+    // }
+
+    // function validateEmail(email) {
+    //     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //     return emailPattern.test(email);
+    // }
+
+    // function validateName(username) {
+    //     return username.trim() !== '';
+    // }
+
+    // function toggleError(elementId, hasError) {
+    //     const messageElement = document.getElementById(elementId);
+    //     messageElement.style.display = hasError ? 'block' : 'none';
+    // }
+
+
+//  function validateField(field) {
+//         const email = document.getElementById('emailField').value;
+//         const name = document.getElementById('nameField').value;
+//         let isValid = true;
+
+//         if (field === 'email') {
+//             isValid = validateEmail(email);
+//             toggleError('emailMessage', !isValid);
+//         } else if (field === 'name') {
+//             isValid = validateName(name);
+//             toggleError('nameMessage', !isValid);
+//         }
+//     }
+
+function validateName(){
+    const value = document.getEmlentById('usernameField').value;
+    const message = document.getEmlentById('usernameMessage');
+   console.log($value);
+    
+    if (value.trim() === ' ') {
+        message.style.display = 'block';
+    }else{
+        message.style.display = 'none';
+    }
+
+}
+    function validateEmail() {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const value = document.getEmlentById(email).value;
+        const email
+        return emailPattern.test(email);
+    }
+
+//     function validateName(name) {
+//         return name.trim() !== '';
+//     }
+
+//     function toggleError(elementId, hasError) {
+//         const messageElement = document.getElementById(elementId);
+//         messageElement.style.display = hasError ? 'block' : 'none';
+//     }
 </script>
 
    </body>

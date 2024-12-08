@@ -23,6 +23,31 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
+        //validate 
+        $validated = $request->validate([
+            'username' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'address' => 'required|string|max:255',
+            'phonenumber' => 'required|string|max:15|unique:users', // Kiểm tra số điện thoại duy nhất
+            'password' => 'required|string|min:6|same:confirmpassword',  // Kiểm tra trường 'confirmpassword'
+        ]);
+
+        // Kiểm tra email đã tồn tại chưa trước khi tạo mới người dùng
+        $existingUser = $this->userRepository->User::where('email', $request->email)->orWhere('phonenumber', $request->phonenumber)->first();
+
+        if ($existingUser) {
+            $errorMessage = '';
+            if ($existingUser->email == $request->email) {
+                $errorMessage .= 'Email đã tồn tại. ';
+            }
+            if ($existingUser->phonenumber == $request->phonenumber) {
+                $errorMessage .= 'Số điện thoại đã tồn tại. ';
+            }
+            return redirect()->back()->withErrors(['error' => $errorMessage]);
+        }
+
+
+
         // User data
         $userData =
         [

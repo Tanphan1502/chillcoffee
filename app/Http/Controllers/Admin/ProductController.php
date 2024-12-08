@@ -33,7 +33,7 @@ class ProductController extends Controller
     //Thêm sản phẩm mới
     public function store(Request $request)
     {
-        //validate sau
+       
 
         // Tao san pham moi
         $productData =

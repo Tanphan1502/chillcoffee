@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="role">Vị trí</label>
+                            <label class="control-label" for="role">Vai trò</label>
                             <select name="role" id="role" class="form-control">
                                  <option value="{{ $user->role }}" selected>
                                     @if ( $user->role === 'admin')
@@ -75,9 +75,9 @@
                                 <option value="{{$user->status}}" selected>
                                     @if ($user->status === 'active')
                                                 <span >Kích hoạt</span>
-                                                <option value="Inactive" >Khoá</option>    
+                                                <option value="Inactive" >Chưa kích hoạt</option>    
                                     @else
-                                                <span>Khoá</span>
+                                                <span>Chưa kích hoạt</span>
                                                 <option value="active" >Kích hoạt</option>   
                                     @endif
                                 </option>
@@ -94,7 +94,7 @@
                     </div>
                      <div class="col-sm-2 pull-right">
                         <div class="form-group">
-                            <label class="control-label" for="description">,</label>
+                           
                             <button type="submit" class=" btn btn-primary ">Cập Nhật </button>
                         </div>
                     </div>
