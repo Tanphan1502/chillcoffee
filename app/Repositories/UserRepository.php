@@ -11,6 +11,12 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         parent::__construct($model);// Truyền tên cột ID
     }
 
+    public function getUserByEmailOrPhone($email, $phone)
+    {
+        return User::where('email', $email)
+            ->orWhere('phonenumber', $phone)
+            ->first();
+    }
 
   
 }

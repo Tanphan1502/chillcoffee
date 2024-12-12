@@ -10,4 +10,7 @@ class BlogController extends Controller
     {
         return view('blog');
     }
-}
+    public function store(Request $request)
+    {
+        $request = $request ->input('content')
+    }

@@ -139,103 +139,102 @@
            });
        });
    </script>
-   
- <!-- SUMMERNOTE -->
-{{-- <script src="{{asset('css2/js/plugins/summernote/summernote.min.js')}}"></script> --}}
 
-{{-- 
-    <script>
-        $(document).ready(function(){
+   <!-- SUMMERNOTE -->
+   <script src="{{ asset('css2/js/plugins/summernote/summernote.min.js') }}"></script>
 
-            $('.summernote').summernote();
+
+   <script>
+       $(document).ready(function() {
+
+           $('.summernote').summernote();
 
        });
-    </script> --}}
-   {{-- mini function section --}}
-<script>
-    function confirmDel(){
-        return confirm('Bạn chắc chắn xoá không ')
-    }
+   </script>
+   {{-- mini function section  --}}
+   <script>
+       // confirm delete item 
+       function confirmDel() {
+           return confirm('Bạn chắc chắn xoá không ')
+       }
 
-    // function dung de check cac field trong form
-    // const validations = 
-    // {
-    //     email:{
-    //         validate: validateEmail,
-    //         messageId: 'emailMessage'
-    //     },
-    //     userName:{
-    //         validate:validateuserName,
-    //         messageId: 'usenameMessage'
-    //     }
-    // };
-   
-    // function validateField(field) {
-    //     const value = document.getElementById(field + 'Field').value;
-    //     const validation = validations[field];
-    //     if (validation) {
-    //         const isValid = validation.validate(value);
-    //         toggleError(validation.messageId, !isValid);
-    //     }
-    // }
+       // Validate form field
 
-    // function validateEmail(email) {
-    //     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    //     return emailPattern.test(email);
-    // }
+    //    document.getElementById('addProForm').addEventListener('submit', function(event) {
+    //        event.preventDefault(); //Ngăn form  gửi khi không hợp lệ
 
-    // function validateName(username) {
-    //     return username.trim() !== '';
-    // }
+    //        //xoá thông báo lỗi cũ
+    //        document.getElementById('usernameMessage').classList.remove('show');
+    //        let isValid = true;
 
-    // function toggleError(elementId, hasError) {
-    //     const messageElement = document.getElementById(elementId);
-    //     messageElement.style.display = hasError ? 'block' : 'none';
-    // }
+    //        //Kiểm tra username
+    //        const name = document.getElementById('username').value;
+    //        if (!name) {
+    //            document.getElementById('usernameMessage').classList.add('show');
+    //            isValid = false;
+    //        }
 
+    //    })
 
-//  function validateField(field) {
-//         const email = document.getElementById('emailField').value;
-//         const name = document.getElementById('nameField').value;
-//         let isValid = true;
+       function validateName() {
+           const name = document.getElementById('username').value;
+           if (!name) {
+               document.getElementById('usernameMessage').classList.add('show');
+           } else {
+               document.getElementById('usernameMessage').classList.remove('show');
+           }
 
-//         if (field === 'email') {
-//             isValid = validateEmail(email);
-//             toggleError('emailMessage', !isValid);
-//         } else if (field === 'name') {
-//             isValid = validateName(name);
-//             toggleError('nameMessage', !isValid);
-//         }
-//     }
+       }
 
-function validateName(){
-    const value = document.getEmlentById('usernameField').value;
-    const message = document.getEmlentById('usernameMessage');
-   console.log($value);
-    
-    if (value.trim() === ' ') {
-        message.style.display = 'block';
-    }else{
-        message.style.display = 'none';
-    }
+       function validateEmail() {
+           const email = document.getElementById('email').value;
+           const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+           if (!emailPattern.test(email)) {
+               document.getElementById('emailMessage').classList.add('show');
+           } else {
+               document.getElementById('emailMessage').classList.remove('show');
+           }
+       }
 
-}
-    function validateEmail() {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const value = document.getEmlentById(email).value;
-        const email
-        return emailPattern.test(email);
-    }
+       function validateAddress() {
+           const address = document.getElementById('address').value;
+           if (!address) {
+               document.getElementById('addressMessage').classList.add('show');
+           } else {
+               document.getElementById('addressMessage').classList.remove('show');
+           }
+       }
 
-//     function validateName(name) {
-//         return name.trim() !== '';
-//     }
+       function validatePhone() {
 
-//     function toggleError(elementId, hasError) {
-//         const messageElement = document.getElementById(elementId);
-//         messageElement.style.display = hasError ? 'block' : 'none';
-//     }
-</script>
+           const phone = document.getElementById('phonenumber').value;
+           const phonePattern = /^\d{10,15}$/; // Điều chỉnh biểu thức chính quy theo định dạng
+           if (!phonePattern.test(phone)) {
+               document.getElementById('phonenumberMessage').classList.add('show');
+           } else {
+               document.getElementById('phonenumberMessage').classList.remove('show');
+           }
+       }
+
+       function validatePass() {
+           const pass = document.getElementById('password').value;
+           if (!pass || pass.length < 5) {
+               document.getElementById('passwordMessage').classList.add('show');
+           } else {
+               document.getElementById('passwordMessage').classList.remove('show');
+           }
+       }
+
+       function validateConfirmPass() {
+           const pass = document.getElementById('password').value;
+           const confirmPass = document.getElementById('confirmpassword').value;
+           if (pass !== confirmPass) {
+               document.getElementById('confirmMessage').classList.add('show');
+           } else {
+               document.getElementById('confirmMessage').classList.remove('show');
+           }
+       }
+   </script>
 
    </body>
 

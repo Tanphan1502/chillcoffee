@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     public function index(){
-        return view('admin.pages.blog');
+        $title = "Bài viết";
+        return view('admin.pages.blog', compact('title'));
     }
     
     public function newPost(){
-        return view('admin.pages.addBlog');
+       $title ="Thêm bài viết";
+        return view('admin.pages.addBlog', compact('title'));
     }
     public function addBlog(Request $request)
     {

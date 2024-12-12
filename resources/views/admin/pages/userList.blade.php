@@ -1,21 +1,28 @@
 @extends('admin.layout')
- <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .error-message {
-            color: red;
-            font-size: 0.9em;
-            display: none; /*Ẩn thông báo theo mặc định*/
-            position: absolute; /* Đặt vị trí tuyệt đối */
-            margin-top: 0px; /* Khoảng cách từ trường nhập liệu */
-        }
-        .form-group {
-            position: relative; /* Để thông báo lỗi có thể sử dụng vị trí tuyệt đối */
-            margin-bottom: 10px; /* Khoảng cách giữa các nhóm trường */
-        }
-    </style>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 0.9em;
+        display: none;
+        /* Ẩn thông báo theo mặc định */
+        position: absolute;
+        /* Đặt vị trí tuyệt đối */
+        margin-top: 0px;
+        /* Khoảng cách từ trường nhập liệu */
+    }
+
+    .form-group {
+        position: relative;
+        /* Để thông báo lỗi có thể sử dụng vị trí tuyệt đối */
+        margin-bottom: 10px;
+        /* Khoảng cách giữa các nhóm trường */
+    }
+</style>
 @section('content')
     <!-- sử dụng hàm old() để lưu lại giá trị khi người dùng gửi form lỗi -->
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
@@ -25,25 +32,25 @@
                 {{-- prepair field  --}}
                 @csrf
                 @method('POST')
-                
+
                 <div class="row">
                     {{-- Username field  --}}
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="username">Tên người dùng</label>
-                            <input type="text" id="username" name="username" 
-                                placeholder="Tên Người dùng" class="form-control" onchange="validatename();"  required>
-                                 <p id="usernameMessage" class="error-message">Vui lòng nhập tên</p>
+                            <input type="text" id="username" name="username" placeholder="Ví dụ: Nguyễn văn a"
+                                class="form-control" onkeyup="validateName();">
+                            <p id="usernameMessage" class="error-message">Vui lòng nhập tên</p>
                         </div>
                     </div>
 
                     {{-- Email field  --}}
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="emailField">Email</label>
-                            <input type="email" id="emailField" name="email" onchange="validateEmail();"
-                                placeholder="Email" class="form-control" required>
-                                <p id="emailMessage" class="error-message">Email không hợp lệ. Vui lòng nhập lại.</p>
+                            <label class="control-label" for="email">Email</label>
+                            <input type="text" id="email" name="email" onchange="validateEmail();"
+                                placeholder="ví dụ: Email@mail.com" class="form-control">
+                            <p id="emailMessage" class="error-message">Email không hợp lệ. Vui lòng nhập lại.</p>
                         </div>
                     </div>
 
@@ -51,9 +58,9 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="address">Địa chỉ</label>
-                            <input type="text" id="address" name="address"
-                                placeholder="Địa chỉ" class="form-control">
-                                <p id="addressMessage" class="error-message">Vui lòng nhập địa chỉ</p>
+                            <input type="text" id="address" name="address" placeholder="123 ngõ 1 hẻm 1 đường 1 ..."
+                                class="form-control" onchange="validateAddress();">
+                            <p id="addressMessage" class="error-message">Vui lòng nhập địa chỉ</p>
                         </div>
                     </div>
 
@@ -61,9 +68,10 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="phonenumber">Số điện thoại</label>
-                            <input type="number" id="phonenumber" name="phonenumber"
-                                placeholder="Số điện thoại" class="form-control">
-                                <p id="phonenumberMessage" class="error-message">Vui lòng nhập số điện thoại.</p>
+                            <input type="tel" id="phonenumber" name="phonenumber" placeholder="090 XXX XXX"
+                                class="form-control" onkeyup="validatePhone()">
+                            <p id="phonenumberMessage" class="error-message">Vui lòng nhập số điện thoại lớn hơn 10 kí tự
+                            </p>
                         </div>
                     </div>
 
@@ -72,8 +80,8 @@
                         <div class="form-group">
                             <label class="control-label" for="password">Mật khẩu</label>
                             <input type="password" id="password" name="password" placeholder="Mật khẩu"
-                                class="form-control">
-                                <p id="passwordMessage" class="error-message">Vui lòng nhập mật khẩu</p>
+                                class="form-control" onkeyup="validatePass();">
+                            <p id="passwordMessage" class="error-message">Mật khẩu tối thiểu 5 kí tự</p>
                         </div>
                     </div>
 
@@ -82,8 +90,8 @@
                         <div class="form-group">
                             <label class="control-label" for="confirmpassword">Nhập lại mật khẩu</label>
                             <input type="password" id="confirmpassword" name="confirmpassword"
-                                placeholder="Nhập lại mật khẩu" class="form-control">
-                                <p id="confirmMessage" class="error-message">Mật khẩu không trùng khớp</p>
+                                placeholder="Nhập lại mật khẩu" class="form-control" onkeyup="validateConfirmPass();">
+                            <p id="confirmMessage" class="error-message">Mật khẩu không trùng khớp</p>
                         </div>
                     </div>
 
@@ -95,7 +103,7 @@
                                 <option value="admin" selected>Quản trị viên</option>
                                 <option value="user">Khách hàng</option>
                             </select>
-                           
+
                         </div>
                     </div>
 
@@ -140,7 +148,7 @@
                                 <tr>
                                     <th data-toggle="true">Tên Người dùng</th>
                                     <th>Avatar</th>
-                                    <th data-hide="phone">Vị trí</th>
+                                    <th data-hide="phone">Vai trò</th>
                                     <th data-hide="phone">Điện thoại</th>
                                     <th data-hide="email">Email</th>
                                     <th data-hide="phone">Địa chỉ</th>

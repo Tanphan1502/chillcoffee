@@ -4,12 +4,14 @@
                    <li class="nav-header">
                        <div class="dropdown profile-element">
                            <span>
-                               <img alt="image" style="width: 100px; height: 100px;" class="img-circle" src="{{ asset(Auth::user()->avatar) }}" />
+                               <img alt="image" style="width: 100px; height: 100px;" class="img-circle"
+                                   src="{{ asset(Auth::user()->avatar) }}" />
                            </span>
                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                               <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ Auth::user()->username }}</strong>
+                               <span class="clear"> <span class="block m-t-xs "> Xin chào <strong
+                                           class="font-bold text-uppercase">{{ Auth::user()->username }}</strong> !
                                    </span> <span class="text-muted text-xs block">{{ Auth::user()->role }}<b
-                                           class="caret"></b></span> </span> </a>
+                                           class="caret"></b></span></span></a>
                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                <li><a href="profile.html">Hồ sơ</a></li>
                                <li><a href="contacts.html">Liên hệ</a></li>
@@ -59,8 +61,8 @@
                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Bài viết</span><span
                                class="fa arrow"></span></a>
                        <ul class="nav nav-second-level collapse">
-                           <li><a href="{{route('newPost')}}">Tạo mới</a></li>
-                           <li><a href="{{route('blogList')}}">Danh sách bài viết</a></li>
+                           <li><a href="{{ route('newPost') }}">Tạo mới</a></li>
+                           <li><a href="{{ route('blogList') }}">Danh sách bài viết</a></li>
                        </ul>
                    </li>
 

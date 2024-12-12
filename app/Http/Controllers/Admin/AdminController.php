@@ -19,7 +19,8 @@ class AdminController extends Controller
         return view('admin.pages.categoryList');
     }
     public function orderList(){
-        return view('admin.pages.orderList');
+        $title = 'Đơn hàng';
+        return view('admin.pages.orderList', compact('title'));
     }
     public function userList(){
         return view('admin.pages.userList');
